@@ -211,6 +211,8 @@ server {
 	listen [::]:443 ssl http2 {{ $default_server }};
 	{{ end }}
 	access_log /var/log/nginx/access.log vhost;
+	http2_max_field_size 64k;
+	http2_max_header_size 64k;
 
 	{{ if eq $network_tag "internal" }}
 	# Only allow traffic from internal clients
@@ -351,6 +353,8 @@ server {
 	{{ if $enable_ipv6 }}
 	listen [::]:443 ssl http2 {{ $default_server }};
 	{{ end }}
+	http2_max_field_size 64k;
+	http2_max_header_size 64k;
 	access_log /var/log/nginx/access.log vhost;
 	return 500;
 
