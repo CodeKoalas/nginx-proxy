@@ -108,6 +108,8 @@ server {
 	{{ end }}
 	access_log /var/log/nginx/access.log vhost;
 	return 503;
+	http2_max_field_size 64k;
+	http2_max_header_size 64k;
 
 	ssl_session_tickets off;
 	ssl_certificate /etc/nginx/certs/default.crt;
